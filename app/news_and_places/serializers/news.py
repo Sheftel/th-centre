@@ -21,4 +21,3 @@ class NewsListSerializer(ModelSerializer):
         fields = '__all__'
         read_only_fields = ('image_preview', )
         ordering = ['-created_at']
-
