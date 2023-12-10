@@ -33,6 +33,8 @@ services:
     image: redis:7.0.5-alpine
     expose:
       - 6379
+    ports:
+      - '6379:6379'
 
   celery:
     build: .
@@ -40,7 +42,7 @@ services:
       - server
       - db
       - redis
-    command: celery -A app worker -B -l INFO -Q celery
+    command: celery -A app worker -B -l DEBUG
     working_dir: /project/app
     volumes:
       - .:/project

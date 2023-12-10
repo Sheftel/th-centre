@@ -11,5 +11,6 @@ __all__ = [
 
 @admin.register(News)
 class NewsAdmin(SummernoteModelAdmin):
+    exclude = ('image_preview',)
     summernote_fields = ('text',)
 

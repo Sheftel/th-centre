@@ -17,7 +17,7 @@ from django.db.models import Model, CharField, DateTimeField, ImageField, TextFi
 class News(Model):
     title = CharField(max_length=255)
     image = ImageField(upload_to='news/', null=True, max_length=255)
-    image_preview = ImageField(upload_to='news/thumbnails/', null=True, editable=False, max_length=255)
+    image_preview = ImageField(upload_to='news/thumbnails/', null=True, max_length=255)
 
     text = TextField(blank=True)
     created_at = DateTimeField(auto_now_add=True)
