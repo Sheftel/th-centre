@@ -4,12 +4,13 @@ services:
   server:
     build: .
     command: >
-      sh -c "python app/manage.py migrate &&
-             python app/manage.py runserver 0.0.0.0:8000"
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/project
     ports:
       - "127.0.0.1:8000:8000"
+    working_dir: /project/app
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
@@ -28,6 +29,25 @@ services:
     ports:
       - 5432:5432
 
+  redis:
+    image: redis:7.0.5-alpine
+    expose:
+      - 6379
+
+  celery:
+    build: .
+    depends_on:
+      - server
+      - db
+      - redis
+    command: celery -A app worker -B -l INFO -Q celery
+    working_dir: /project/app
+    volumes:
+      - .:/project
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
 
 volumes:
   postgres-data:
