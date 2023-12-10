@@ -24,22 +24,17 @@ class News(Model):
     author = CharField(max_length=255)
 
     class Meta:
-        verbose_name = 'News_singular'
-        verbose_name_plural = 'News_plural'
+        verbose_name = 'News'
+        verbose_name_plural = 'News'
 
     def save(self, **kwargs):
         if not self.image:
             self.image_preview = None
         else:
             image_data = BytesIO()
-            # self.image.open()
             image = Image.open(self.image)
-            if image.height > image.width:
-                ...
-                preview_size = (200, 400)
-            else:
-                preview_size = (400, 200)
-                ...
+            resize_rate = max(200 / image.width, 200 / image.height)
+            preview_size = (image.width*resize_rate, image.height*resize_rate)
             image.thumbnail(preview_size)
             image.save(image_data, 'png')
             self.image_preview = InMemoryUploadedFile(image_data, 'ImageField',
