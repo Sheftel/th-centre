@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "81ef425a-8416-47a2-bfaf-accd19eb1ddd",
+		"name": "centre",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23411478"
+	},
+	"item": [
+		{
+			"name": "news",
+			"item": [
+				{
+					"name": "{news_id}",
+					"item": [
+						{
+							"name": "news detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/news/:news_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"news",
+										":news_id"
+									],
+									"variable": [
+										{
+											"key": "news_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "news delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/news/:news_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"news",
+										":news_id"
+									],
+									"variable": [
+										{
+											"key": "news_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "news update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "baby",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "aaaa",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/news/:news_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"news",
+										":news_id"
+									],
+									"variable": [
+										{
+											"key": "news_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "news list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/news/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"news",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "news create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/news/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"news",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "basic input",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "title",
+											"value": "title",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "text",
+											"type": "text"
+										},
+										{
+											"key": "author",
+											"value": "author",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/news/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"news",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://0.0.0.0:8000",
+			"type": "string"
+		}
+	]
+}
