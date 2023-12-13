@@ -42,7 +42,7 @@ services:
       - server
       - db
       - redis
-    command: celery -A app worker -B -l DEBUG
+    command: celery -A app worker -B -l INFO
     working_dir: /project/app
     volumes:
       - .:/project
